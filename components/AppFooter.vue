@@ -5,6 +5,24 @@
         <img src="/logo.webp" alt="" class="brand-logo" width="28" height="28" />
         <span>AK&nbsp;Games</span>
       </div>
+      <div class="footer-links">
+        <a
+          href="https://www.linkedin.com/company/ak-games-studio"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="footer-link"
+        >
+          LinkedIn
+        </a>
+        <a
+          href="https://x.com/akgamesstudio"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="footer-link"
+          >
+          X
+        </a>
+      </div>
       <p class="footer-note">
         Craft-built casino slot games. &copy; {{ new Date().getFullYear() }} AK Games. All rights reserved.
       </p>
@@ -47,5 +65,16 @@
   margin: 0;
   font-size: 0.85rem;
   color: #b9b2a6;
+}
+
+.footer-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.2s;
+}
+
+.footer-link:hover {
+  color: #0077b5;
 }
 </style>
