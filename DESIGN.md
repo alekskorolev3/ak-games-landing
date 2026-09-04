@@ -265,10 +265,10 @@ A gentle, consistent corner language with three radius steps, used functionally.
 - **Mobile (<640px):** Text links are hidden. The CTA shrinks to 0.5rem 1rem padding, 0.85rem font.
 
 ### Game Card (signature component)
-- **Layout:** A single horizontal card — 320px cover on the left, body on the right; stacks to one column under 640px.
+- **Layout:** Cards ride a left-aligned scroll-snap carousel (340px cards, newest first) with ghost prev/next arrows — compact vertical cards with a square top-anchored art crop (1/1, title lives in the body) on top and body below; cards stretch to equal height, Play links pinned to the bottom edge. Native swipe on touch, no autoplay, arrows disable at the ends.
 - **Cover:** Real game art (`/games/lizard-kings-gold.png`), `object-fit: cover`, raised-surface ground.
 - **Body:** Surface background, 1.5rem padding, 1px line border, 12px radius. Game title (h3), category tag (Sora 600, 0.78rem, uppercase, 0.1em spacing, ink-soft), descriptive note (0.95rem, ink-soft), and a gold "Play on Stake →" link.
-- **Live chip:** A green status pill (999px radius, uppercase white text) marks the game as live on Stake.
+- **Live chip:** A green status pill (999px radius, uppercase white text) marks the game as live on Stake. Unreleased titles use the same pill in gold with navy text ("Coming soon") — green never marks anything but live.
 
 ## Do's and Don'ts
 

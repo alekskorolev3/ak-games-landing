@@ -31,8 +31,8 @@ A small, focused studio building casino slot games. Its meaningfully different m
 ## Capabilities and Constraints
 
 - Founded 2026; team of two (confirmed).
-- One game shipped and live on Stake: "Lizard Kings Gold" (https://stake.com/ru/casino/games/akgames-lizard-kings-gold).
-- Exact figures still pending: locations, milestones, total game count beyond the shipped one — record as confirmed placeholders pending the user's exact figures.
+- Two games shipped, both live on Stake: "Lizard Kings Gold" (https://stake.com/ru/casino/games/akgames-lizard-kings-gold) and "Ancient Rus" (https://stake.com/ru/casino/games/akgames-ancient-rus), a Slavic-mythology slot with three bonus games — Zmey Gorynych, Koschei and Mokosh.
+- Exact figures still pending: locations and milestones — record as confirmed placeholders pending the user's exact figures.
 - Nothing may be invented: no fabricated stats, testimonials, customers, benchmarks, pricing, licensing, or deployment claims.
 
 ## Brand Commitments
@@ -47,7 +47,9 @@ A small, focused studio building casino slot games. Its meaningfully different m
 
 - Logo asset confirmed: `public/logo.png` (white mark on transparent, sourced from the provided `logo.jpeg`).
 - Real game shipped: **Lizard Kings Gold**, a Stake Engine slot live on Stake (https://stake.com/ru/casino/games/akgames-lizard-kings-gold), studio page /ru/casino/group/ak-games. House edge 3.30% shown on the game page. Real game art saved to `public/games/lizard-kings-gold.png`.
-- Real company facts exist (founding, team size, games shipped, locations, milestones). Founded 2026, team of two, and one game shipped are confirmed; locations and milestones are pending user confirmation — currently placeholders.
+- Real game shipped: **Ancient Rus**, a Slavic-mythology slot with three bonus games (Zmey Gorynych, Koschei, Mokosh). Real game art saved to `public/games/ancient-rus.webp` (converted from the provided `ak-games_ancient-rus_tile.png`).
+- Announced, unreleased: **Hollow Cat** (spooky-season slot; details, mechanics and play URL not confirmed — shows as "Coming soon" with no Play link). Tile saved to `public/games/hollow-cat.webp` (converted from the provided `ak-games_hollow-cat_tile (1).png`). Not counted in games shipped.
+- Real company facts exist (founding, team size, games shipped, locations, milestones). Founded 2026, team of two, and two games shipped are confirmed; locations and milestones are pending user confirmation — currently placeholders.
 - No game demos, trailers, metrics, testimonials, case studies, or press assets beyond the above were provided. Future work must not fabricate these.
 
 ## Product Principles
