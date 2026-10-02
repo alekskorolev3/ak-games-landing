@@ -1,21 +1,36 @@
 <script setup lang="ts">
 const links = [
-  { href: '#games', label: 'Games' },
-  { href: '#studio', label: 'Studio' },
-  { href: '#contact', label: 'Contact' }
+  { to: '/#games', label: 'Games' },
+  { to: '/#studio', label: 'Studio' },
+  { to: '/#contact', label: 'Contact' }
 ]
 </script>
 
 <template>
   <header class="nav">
     <div class="container nav-inner">
-      <a href="#top" class="brand" aria-label="AK Games — back to top">
-        <img src="/logo.webp" alt="" class="brand-logo" width="32" height="32" />
+      <NuxtLink to="/" class="brand" aria-label="AK Games — home">
+        <img
+          src="/logo.webp"
+          alt=""
+          class="brand-logo"
+          width="32"
+          height="32"
+        />
         <span class="brand-name">AK&nbsp;Games</span>
-      </a>
+      </NuxtLink>
       <nav class="nav-links" aria-label="Primary">
-        <a v-for="link in links" :key="link.href" :href="link.href" class="nav-link">{{ link.label }}</a>
-        <a href="#contact" class="btn btn-primary nav-cta">Get in touch</a>
+        <NuxtLink
+          v-for="link in links"
+          :key="link.to"
+          :to="link.to"
+          class="nav-link"
+        >
+          {{ link.label }}
+        </NuxtLink>
+        <NuxtLink to="/#contact" class="btn btn-primary nav-cta">
+          Get in touch
+        </NuxtLink>
       </nav>
     </div>
   </header>
@@ -71,6 +86,10 @@ const links = [
   font-weight: 600;
   font-size: 0.95rem;
   color: var(--ink);
+}
+
+.nav-link:hover {
+  color: var(--gold-bright);
 }
 
 .nav-cta {

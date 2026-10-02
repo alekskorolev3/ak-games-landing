@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-27T00:00:00Z",
+  "title": "Design System: AK Games Landing",
+  "extensions": {
+    "colorMeta": {
+      "navy": {
+        "role": "primary",
+        "displayName": "Deep Navy",
+        "canonical": "oklch(14.1% 0.032 264)",
+        "tonalRamp": [
+          "oklch(14.1% 0.032 264)",
+          "oklch(22% 0.032 264)",
+          "oklch(30% 0.032 264)",
+          "oklch(38% 0.032 264)",
+          "oklch(46% 0.032 264)",
+          "oklch(54% 0.032 264)",
+          "oklch(62% 0.032 264)",
+          "oklch(70% 0.032 264)"
+        ]
+      },
+      "ground": {
+        "role": "neutral",
+        "displayName": "Warm Off-White",
+        "canonical": "oklch(97.2% 0.005 80)",
+        "tonalRamp": [
+          "oklch(30% 0.005 80)",
+          "oklch(42% 0.005 80)",
+          "oklch(54% 0.005 80)",
+          "oklch(66% 0.005 80)",
+          "oklch(78% 0.005 80)",
+          "oklch(86% 0.005 80)",
+          "oklch(92% 0.005 80)",
+          "oklch(97.2% 0.005 80)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "White Surface",
+        "canonical": "oklch(100% 0 0)",
+        "tonalRamp": [
+          "oklch(30% 0 0)",
+          "oklch(42% 0 0)",
+          "oklch(54% 0 0)",
+          "oklch(66% 0 0)",
+          "oklch(78% 0 0)",
+          "oklch(86% 0 0)",
+          "oklch(94% 0 0)",
+          "oklch(100% 0 0)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(16% 0.005 90)",
+        "tonalRamp": [
+          "oklch(16% 0.005 90)",
+          "oklch(24% 0.005 90)",
+          "oklch(32% 0.005 90)",
+          "oklch(40% 0.005 90)",
+          "oklch(48% 0.005 90)",
+          "oklch(56% 0.005 90)",
+          "oklch(64% 0.005 90)",
+          "oklch(72% 0.005 90)"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Ink Soft",
+        "canonical": "oklch(35% 0.006 90)",
+        "tonalRamp": [
+          "oklch(35% 0.006 90)",
+          "oklch(42% 0.006 90)",
+          "oklch(49% 0.006 90)",
+          "oklch(56% 0.006 90)",
+          "oklch(63% 0.006 90)",
+          "oklch(70% 0.006 90)",
+          "oklch(77% 0.006 90)",
+          "oklch(84% 0.006 90)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Warm Line",
+        "canonical": "oklch(89% 0.009 85)",
+        "tonalRamp": [
+          "oklch(30% 0.009 85)",
+          "oklch(42% 0.009 85)",
+          "oklch(54% 0.009 85)",
+          "oklch(66% 0.009 85)",
+          "oklch(76% 0.009 85)",
+          "oklch(82% 0.009 85)",
+          "oklch(86% 0.009 85)",
+          "oklch(89% 0.009 85)"
+        ]
+      },
+      "gold": {
+        "role": "primary",
+        "displayName": "Premium Gold",
+        "canonical": "oklch(69% 0.11 92)",
+        "tonalRamp": [
+          "oklch(30% 0.11 92)",
+          "oklch(40% 0.11 92)",
+          "oklch(50% 0.11 92)",
+          "oklch(60% 0.11 92)",
+          "oklch(69% 0.11 92)",
+          "oklch(76% 0.11 92)",
+          "oklch(82% 0.11 92)",
+          "oklch(88% 0.11 92)"
+        ]
+      },
+      "gold-soft": {
+        "role": "neutral",
+        "displayName": "Soft Gold",
+        "canonical": "oklch(88% 0.06 95)",
+        "tonalRamp": [
+          "oklch(30% 0.06 95)",
+          "oklch(42% 0.06 95)",
+          "oklch(54% 0.06 95)",
+          "oklch(66% 0.06 95)",
+          "oklch(76% 0.06 95)",
+          "oklch(82% 0.06 95)",
+          "oklch(86% 0.06 95)",
+          "oklch(88% 0.06 95)"
+        ]
+      },
+      "green": {
+        "role": "primary",
+        "displayName": "Signal Green",
+        "canonical": "oklch(54% 0.10 155)",
+        "tonalRamp": [
+          "oklch(20% 0.10 155)",
+          "oklch(30% 0.10 155)",
+          "oklch(40% 0.10 155)",
+          "oklch(48% 0.10 155)",
+          "oklch(54% 0.10 155)",
+          "oklch(62% 0.10 155)",
+          "oklch(70% 0.10 155)",
+          "oklch(78% 0.10 155)"
+        ]
+      },
+      "green-dark": {
+        "role": "primary",
+        "displayName": "Signal Green Dark",
+        "canonical": "oklch(46% 0.09 155)",
+        "tonalRamp": [
+          "oklch(20% 0.09 155)",
+          "oklch(30% 0.09 155)",
+          "oklch(38% 0.09 155)",
+          "oklch(46% 0.09 155)",
+          "oklch(54% 0.09 155)",
+          "oklch(62% 0.09 155)",
+          "oklch(70% 0.09 155)",
+          "oklch(78% 0.09 155)"
+        ]
+      },
+      "danger": {
+        "role": "neutral",
+        "displayName": "Danger Red",
+        "canonical": "oklch(53% 0.15 33)",
+        "tonalRamp": [
+          "oklch(20% 0.15 33)",
+          "oklch(30% 0.15 33)",
+          "oklch(40% 0.15 33)",
+          "oklch(48% 0.15 33)",
+          "oklch(53% 0.15 33)",
+          "oklch(60% 0.15 33)",
+          "oklch(68% 0.15 33)",
+          "oklch(76% 0.15 33)"
+        ]
+      },
+      "focus": {
+        "role": "neutral",
+        "displayName": "Focus Blue",
+        "canonical": "oklch(42% 0.07 245)",
+        "tonalRamp": [
+          "oklch(20% 0.07 245)",
+          "oklch(30% 0.07 245)",
+          "oklch(38% 0.07 245)",
+          "oklch(42% 0.07 245)",
+          "oklch(52% 0.07 245)",
+          "oklch(60% 0.07 245)",
+          "oklch(68% 0.07 245)",
+          "oklch(76% 0.07 245)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Sora Display", "purpose": "The site name in the hero viewport only." },
+      "headline": { "displayName": "Sora Headline", "purpose": "Section headings (Games, Studio, Get in touch)." },
+      "title": { "displayName": "Sora Title", "purpose": "Game card titles and sub-headings." },
+      "body": { "displayName": "Manrope Body", "purpose": "All paragraphs, buttons, inputs, and nav links. 68ch max measure." },
+      "label": { "displayName": "Manrope Label", "purpose": "Form field labels, 600 weight." }
+    },
+    "shadows": [
+      {
+        "name": "focus-ring",
+        "value": "0 0 0 3px rgba(15, 27, 45, 0.12)",
+        "purpose": "Input focus state; a soft navy halo replacing the default outline."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-state",
+        "value": "ease-out 0.18s",
+        "purpose": "Background-color transitions on buttons and input borders."
+      },
+      {
+        "name": "press",
+        "value": "ease-out 0.12s",
+        "purpose": "Primary button active state translateY(1px) press."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px", "purpose": "Nav links collapse; hero padding tightens." },
+      { "name": "md", "value": "760px", "purpose": "Two-column grids (studio, contact) collapse to one column." },
+      { "name": "lg", "value": "900px", "purpose": "Game grid drops from 3 to 2 columns." },
+      { "name": "xs", "value": "560px", "purpose": "Game grid drops to 1 column." }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "btn-primary",
+      "description": "The single green action. Used for 'Get in touch' and 'Send message'.",
+      "html": "<button class=\"ds-btn-primary\">Get in touch</button>",
+      "css": ".ds-btn-primary { display: inline-block; font-family: var(--font-body); font-size: 1rem; font-weight: 600; color: #ffffff; background: var(--green); border: none; border-radius: var(--radius-sm); padding: 0.85rem 1.6rem; cursor: pointer; transition: background-color 0.18s ease-out, transform 0.12s ease-out; } .ds-btn-primary:hover { background: var(--green-dark); } .ds-btn-primary:active { transform: translateY(1px); } .ds-btn-primary:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "btn-ghost",
+      "description": "Secondary action. Outlined in navy; fills navy on hover.",
+      "html": "<button class=\"ds-btn-ghost\">See the games</button>",
+      "css": ".ds-btn-ghost { display: inline-block; font-family: var(--font-body); font-size: 1rem; font-weight: 600; color: var(--navy); background: transparent; border: 1px solid var(--navy); border-radius: var(--radius-sm); padding: 0.85rem 1.6rem; cursor: pointer; transition: background-color 0.18s ease-out, transform 0.12s ease-out; } .ds-btn-ghost:hover { background: var(--navy); color: #ffffff; } .ds-btn-ghost:active { transform: translateY(1px); } .ds-btn-ghost:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Form field with line border; navy border + soft halo on focus.",
+      "html": "<div style=\"max-width:24rem\"><label class=\"ds-label\" for=\"ds-name\">Name</label><input class=\"ds-input\" id=\"ds-name\" type=\"text\" placeholder=\"Your name\" /></div>",
+      "css": ".ds-label { display: block; font-family: var(--font-body); font-weight: 600; font-size: 0.92rem; color: var(--ink); margin-bottom: 0.5rem; } .ds-input { font-family: var(--font-body); font-size: 1rem; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 0.8rem 1rem; width: 100%; transition: border-color 0.15s ease-out, box-shadow 0.15s ease-out; } .ds-input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(74, 159, 212, 0.18); } .ds-input::placeholder { color: var(--ink-soft); opacity: 0.7; }"
+    },
+    {
+      "name": "Navigation Bar",
+      "kind": "nav",
+      "refersTo": "nav",
+      "description": "Sticky bar over blurred black; logo mark + links + compact green CTA.",
+      "html": "<div class=\"ds-nav\"><a class=\"ds-nav-brand\" href=\"#\"><img class=\"ds-nav-logo\" src=\"/logo.webp\" alt=\"\" width=\"32\" height=\"32\"><span>AK&nbsp;Games</span></a><nav class=\"ds-nav-links\"><a class=\"ds-nav-link\" href=\"#\">Games</a><a class=\"ds-nav-link\" href=\"#\">Studio</a><a class=\"ds-nav-link\" href=\"#\">Contact</a></nav></div>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; height: 4.25rem; padding: 0 1rem; background: rgba(0, 0, 0, 0.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); } .ds-nav-brand { display: inline-flex; align-items: center; gap: 0.6rem; text-decoration: none; color: var(--ink); font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; letter-spacing: -0.01em; } .ds-nav-logo { width: 2.1rem; height: 2.1rem; border-radius: var(--radius-sm); background: var(--surface-raised); object-fit: contain; padding: 0.2rem; } .ds-nav-links { display: flex; align-items: center; gap: 1.5rem; } .ds-nav-link { text-decoration: none; font-family: var(--font-body); font-weight: 600; font-size: 0.95rem; color: var(--ink); } .ds-nav-link:hover { color: var(--gold-bright); } .ds-nav-link:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }"
+    },
+    {
+      "name": "Game Card",
+      "kind": "card",
+      "refersTo": "game-card",
+      "description": "Horizontal feature card: real game art left, title/tag/note/play-link right, green Live chip.",
+      "html": "<div class=\"ds-game-card\"><div class=\"ds-game-cover\" aria-hidden=\"true\"><img class=\"ds-game-art\" src=\"/games/lizard-kings-gold.webp\" alt=\"\" /></div><div class=\"ds-game-body\"><p class=\"ds-game-tag\">Live on Stake</p><h3 class=\"ds-game-title\">Lizard Kings Gold</h3><p class=\"ds-game-note\">Stake Engine slot. House edge 3.30%.</p><a class=\"ds-game-play\" href=\"#\">Play on Stake →</a></div><span class=\"ds-game-live\">Live</span></div>",
+      "css": ".ds-game-card { position: relative; display: grid; grid-template-columns: 320px 1fr; max-width: 720px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden; } .ds-game-cover { min-height: 220px; background: var(--surface-raised); } .ds-game-art { width: 100%; height: 100%; object-fit: cover; display: block; } .ds-game-body { padding: 1.5rem; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; } .ds-game-tag { font-family: var(--font-display); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); margin: 0 0 0.5rem; } .ds-game-title { font-family: var(--font-display); font-weight: 600; font-size: 1.25rem; line-height: 1.12; letter-spacing: -0.02em; color: var(--ink); margin: 0 0 0.5rem; } .ds-game-note { font-family: var(--font-body); font-size: 0.95rem; color: var(--ink-soft); margin: 0; } .ds-game-play { font-weight: 700; font-size: 0.92rem; color: var(--gold); text-decoration: none; margin-top: 0.5rem; } .ds-game-play:hover { color: var(--gold-bright); } .ds-game-live { position: absolute; top: 0.75rem; right: 0.75rem; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #ffffff; background: var(--green); padding: 0.3rem 0.55rem; border-radius: 999px; } @media (max-width: 640px) { .ds-game-card { grid-template-columns: 1fr; } }"
+    },
+    {
+      "name": "Studio Fact Row",
+      "kind": "custom",
+      "refersTo": "game-card",
+      "description": "Track-record list rows: Sora label left, confirmed values in gold, pending ones muted.",
+      "html": "<dl class=\"ds-facts\"><div class=\"ds-fact-row\"><dt class=\"ds-fact-label\">Founded</dt><dd class=\"ds-fact-confirmed\">2026</dd></div><div class=\"ds-fact-row\"><dt class=\"ds-fact-label\">Locations</dt><dd class=\"ds-fact-pending\">— <span>to confirm</span></dd></div></dl>",
+      "css": ".ds-facts { margin: 0; border-top: 1px solid var(--line); } .ds-fact-row { display: grid; grid-template-columns: 9rem 1fr; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid var(--line); } .ds-fact-label { font-family: var(--font-display); font-weight: 600; color: var(--ink-soft); } .ds-fact-confirmed { margin: 0; font-family: var(--font-body); font-weight: 600; color: var(--gold); } .ds-fact-pending { margin: 0; font-family: var(--font-body); font-weight: 500; color: var(--ink-soft); } .ds-fact-pending span { margin-left: 0.5rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Investor's Ledger",
+    "overview": "AK Games' landing page is a ledger: orderly, transparent, and built for trust. Every element earns its place by answering exactly one question — does this help an investor or partner decide to engage? The palette of black ground and elevated charcoal surfaces creates a calm, authoritative reading experience. Green is saved for the single primary action; gold is reserved for links, the hero offer, and confirmed facts. The page is flat by default, with no ornament and no hero metrics. Spacing is generous, giving each section room to breathe, and the type pairing of Sora (display) and Manrope (body) strikes a balance between confident headlines and readable body text.\n\nThis is the category standard, played straight: a professional, credible, premium investor landing page that refuses both the casino-cliché trap (neon, gold motifs, playing-card imagery) and the startup-hype trap (hero metrics, big numbers, buzzwords). The craft bar is top iGaming studio level.",
+    "keyCharacteristics": [
+      "Black ground (#000000) with charcoal surface (#111111) and raised step (#1c1c1c)",
+      "Flat by default; no box-shadows except the 3px focus ring",
+      "Green as the single accent for primary action only",
+      "Gold for links, the hero offer line, and confirmed facts on dark surfaces",
+      "No ornament, no gradients, no hero image, no metrics",
+      "Generous section spacing (5rem block padding)",
+      "One real game shown; placeholders are never presented as real"
+    ],
+    "rules": [
+      { "name": "The Precious Accent Rule", "body": "Green is used for the primary action only. Gold is used for links, the hero offer, and confirmed facts. Their rarity is the point.", "section": "colors" },
+      { "name": "The Two-Surface Rule", "body": "The page has one black ground (#000000) and one raised surface (#111111) with a single elevation step (#1c1c1c). No further page-wide backgrounds are introduced.", "section": "colors" },
+      { "name": "The Two-Family Rule", "body": "Sora is reserved for display roles: headings, the hero offer, the brand, game tags, and studio fact labels. Manrope is used for everything else: body text, buttons, inputs, nav links. No mixing outside these roles.", "section": "typography" },
+      { "name": "The Flat-By-Default Rule", "body": "No surface casts a shadow. Containers are distinguished by borders (1px solid var(--line)) or by switching surface elevation. The only exception is the 3px focus ring on :focus-visible and focused inputs.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use green only for the primary action button, the Live chip, and the form success state.",
+      "Do use gold for links, the hero offer line, and confirmed facts on dark surfaces.",
+      "Do keep the body ground black (#000000) and the surface #111111 with a raised #1c1c1c step.",
+      "Do use Sora for display roles (headings, offer, brand, tags, labels) and Manrope for everything else.",
+      "Do use the 7-step spacing scale (0.5rem through 8rem) for all gaps, padding, and margins.",
+      "Do use 6px radius for interactive elements (buttons, inputs) and 12px radius for containers (cards, success box).",
+      "Do use the 3px focus ring (#4a9fd4 with 3px offset) for all interactive elements.",
+      "Do keep the page flat — no box-shadows, no gradients as decoration."
+    ],
+    "donts": [
+      "Don't use green or gold on light surfaces — there are no light surfaces in this theme.",
+      "Don't introduce further background elevations beyond the two documented surfaces.",
+      "Don't use Sora for body text, buttons, or form labels.",
+      "Don't use kickers, eyebrows, or decorative labels above headings.",
+      "Don't add metrics, hero images, or big numbers to the hero viewport.",
+      "Don't use casino-cliché motifs (neon, playing cards, dice, chips) or startup-hype patterns (hero stats, testimonials, carousels).",
+      "Don't use the Live chip's pill shape (999px radius) as a general system pattern — it is a status badge, not a design token."
+    ]
+  }
+}

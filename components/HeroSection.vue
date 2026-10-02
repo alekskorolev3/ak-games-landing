@@ -1,9 +1,3 @@
-<script setup lang="ts">
-const scrollToContact = () => {
-  document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })
-}
-</script>
-
 <template>
   <section id="top" class="hero">
     <div class="container hero-inner">
@@ -14,7 +8,7 @@ const scrollToContact = () => {
         for operators and partners who value quality over volume.
       </p>
       <div class="hero-actions">
-        <button type="button" class="btn btn-primary hero-cta" @click="scrollToContact">
+        <a href="#contact" class="btn btn-primary hero-cta">
           <svg class="reel-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
             <g class="reel-col">
               <rect x="2" y="4" width="5.4" height="16" rx="1.6" fill="rgba(255,255,255,0.85)" />
@@ -36,7 +30,7 @@ const scrollToContact = () => {
             </g>
           </svg>
           Get in touch
-        </button>
+        </a>
       </div>
     </div>
   </section>

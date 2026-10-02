@@ -8,14 +8,7 @@
   FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance.
 -->
 <template>
-  <div class="site">
-    <AppNav />
-    <main>
-      <HeroSection />
-      <PortfolioSection />
-      <TrackRecordSection />
-      <ContactSection />
-    </main>
-    <AppFooter />
-  </div>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>

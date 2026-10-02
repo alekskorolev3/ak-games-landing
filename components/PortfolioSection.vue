@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { gamesOrdered, liveGamesCount } from '~/data/games'
 
 const trackRef = ref<HTMLElement | null>(null)
 const canScroll = ref(false)
@@ -33,55 +33,6 @@ onUnmounted(() => {
   trackRef.value?.removeEventListener('scroll', updateNav)
   window.removeEventListener('resize', updateNav)
 })
-
-const games = [
-  {
-    title: 'Oktobercat',
-    tag: 'Live on Stake',
-    note: 'Bavarian beer-fest slot.',
-    img: '/games/oktobercat.webp',
-    url: 'https://stake.com/ru/casino/games/akgames-oktobercat',
-    chip: 'Live',
-    chipLabel: 'Live game'
-  },
-  {
-    title: 'Vice Heat Cat',
-    tag: 'Live on Stake',
-    note: 'Sunset-strip slot.',
-    img: '/games/vice-heat-cat.webp',
-    url: 'https://stake.com/ru/casino/games/akgames-vice-heat-cat',
-    chip: 'Live',
-    chipLabel: 'Live game'
-  },
-  {
-    title: 'Hollow Cat',
-    tag: 'Coming soon',
-    note: 'Spooky-season slot. Details to be announced.',
-    img: '/games/hollow-cat.webp',
-    url: '',
-    chip: 'Coming soon',
-    chipLabel: 'Coming soon',
-    soon: true
-  },
-  {
-    title: 'Ancient Rus',
-    tag: 'Live on Stake',
-    note: 'Slavic-mythology slot. Three bonus games — Zmey Gorynych, Koschei and Mokosh.',
-    img: '/games/ancient-rus.webp',
-    url: 'https://stake.com/ru/casino/games/akgames-ancient-rus',
-    chip: 'Live',
-    chipLabel: 'Live game'
-  },
-  {
-    title: 'Lizard Kings Gold',
-    tag: 'Live on Stake',
-    note: 'Stake Engine slot. House edge 3.30%. Gold-themed reptiles with a desert bonus round.',
-    img: '/games/lizard-kings-gold.webp',
-    url: 'https://stake.com/ru/casino/games/akgames-lizard-kings-gold',
-    chip: 'Live',
-    chipLabel: 'Live game'
-  }
-]
 </script>
 
 <template>
@@ -89,23 +40,52 @@ const games = [
     <div class="container">
       <h2>Games</h2>
       <p class="games-intro">
-        Four titles released — Oktobercat, Vice Heat Cat, Ancient Rus and
-        Lizard Kings Gold live on Stake — each built to the same bar:
-        clean math, sharp art, play that holds up.
+        {{ liveGamesCount }} titles live on Stake — Hollow Cat, Oktobercat,
+        Vice Heat Cat, Ancient Rus and Lizard Kings Gold — each built to the same
+        bar: clean math, sharp art, play that holds up. Candy Cat is next.
       </p>
-      <div ref="trackRef" class="game-track" role="region" aria-roledescription="carousel" aria-label="Games">
-        <article v-for="game in games" :key="game.title" class="game-card">
+      <div
+        ref="trackRef"
+        class="game-track"
+        role="region"
+        aria-roledescription="carousel"
+        aria-label="Games"
+      >
+        <NuxtLink
+          v-for="game in gamesOrdered"
+          :key="game.slug"
+          :to="`/games/${game.slug}`"
+          class="game-card"
+        >
           <div class="game-cover" aria-hidden="true">
-            <img :src="game.img" :alt="game.title + ' game art'" class="game-cover-img" loading="lazy" decoding="async" width="408" height="546" />
+            <img
+              :src="game.cover"
+              :alt="''"
+              class="game-cover-img"
+              loading="lazy"
+              decoding="async"
+              width="408"
+              height="546"
+            />
           </div>
           <div class="game-body">
-            <p class="game-tag">{{ game.tag }}</p>
+            <p class="game-tag">
+              {{ game.status === 'coming-soon' ? 'Coming soon' : 'Live on Stake' }}
+            </p>
             <h3>{{ game.title }}</h3>
-            <p class="game-note">{{ game.note }}</p>
-            <a v-if="game.url" :href="game.url" target="_blank" rel="noopener" class="game-play">Play on Stake →</a>
+            <p class="game-note">{{ game.tagline }}</p>
+            <span class="game-play">
+              {{ game.status === 'coming-soon' ? 'View details →' : 'View game →' }}
+            </span>
           </div>
-          <span class="real-chip" :class="{ 'chip-soon': game.soon }" :aria-label="game.chipLabel">{{ game.chip }}</span>
-        </article>
+          <span
+            class="real-chip"
+            :class="{ 'chip-soon': game.status === 'coming-soon' }"
+            :aria-label="game.status === 'coming-soon' ? 'Coming soon' : 'Live game'"
+          >
+            {{ game.status === 'coming-soon' ? 'Coming soon' : 'Live' }}
+          </span>
+        </NuxtLink>
       </div>
       <div v-if="canScroll" class="games-controls">
         <button
@@ -115,7 +95,16 @@ const games = [
           aria-label="Previous games"
           @click="scrollByCard(-1)"
         >
-          <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true" focusable="false"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true" focusable="false">
+            <path
+              d="M10 3 5 8l5 5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
         </button>
         <button
           type="button"
@@ -124,7 +113,16 @@ const games = [
           aria-label="Next games"
           @click="scrollByCard(1)"
         >
-          <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true" focusable="false"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true" focusable="false">
+            <path
+              d="M6 3l5 5-5 5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
         </button>
       </div>
     </div>
@@ -166,6 +164,18 @@ const games = [
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.18s ease-out;
+}
+
+.game-card:hover {
+  border-color: var(--gold-soft);
+}
+
+.game-card:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
 }
 
 .game-cover {
@@ -218,7 +228,11 @@ const games = [
   margin-top: auto;
   font-weight: 700;
   font-size: 0.92rem;
-  text-decoration: none;
+  color: var(--gold);
+}
+
+.game-card:hover .game-play {
+  color: var(--gold-bright);
 }
 
 .games-controls {

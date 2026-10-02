@@ -31,9 +31,10 @@ A small, focused studio building casino slot games. Its meaningfully different m
 ## Capabilities and Constraints
 
 - Founded 2026; team of two (confirmed).
-- Four games shipped, all live on Stake: "Oktobercat" (https://stake.com/ru/casino/games/akgames-oktobercat), a Bavarian beer-fest slot; "Vice Heat Cat" (https://stake.com/ru/casino/games/akgames-vice-heat-cat), a sunset-strip slot; "Lizard Kings Gold" (https://stake.com/ru/casino/games/akgames-lizard-kings-gold); and "Ancient Rus" (https://stake.com/ru/casino/games/akgames-ancient-rus), a Slavic-mythology slot with three bonus games — Zmey Gorynych, Koschei and Mokosh.
-- Exact figures still pending: locations and milestones — record as confirmed placeholders pending the user's exact figures.
+- Five games shipped, all live on Stake: "Hollow Cat" (https://stake.com/casino/games/akgames-hollow-cat), spooky-season, RTP 96.30%; "Oktobercat" (https://stake.com/casino/games/akgames-oktobercat), Bavarian beer-fest, RTP 96.30%; "Vice Heat Cat" (https://stake.com/casino/games/akgames-vice-heat-cat), sunset-strip, RTP 96.30%; "Lizard Kings Gold" (https://stake.com/casino/games/akgames-lizard-kings-gold), Mesoamerican 5×5 / 3,125 ways, RTP 96.70% / max win 5,000×; and "Ancient Rus" (https://stake.com/casino/games/akgames-ancient-rus), Slavic-mythology 6×4 / 4,096 ways with Serpent’s Lair, Koschei and Makosh bonuses, RTP 96.70%, max win 10,000×.
+- Locations are intentionally omitted until confirmed (no “to confirm” placeholders on the live site).
 - Nothing may be invented: no fabricated stats, testimonials, customers, benchmarks, pricing, licensing, or deployment claims.
+- Per-game detail pages exist at `/games/[slug]` with specs, features, demo CTA, and media. Unconfirmed RTP/house-edge fields remain marked pending.
 
 ## Brand Commitments
 
@@ -46,12 +47,13 @@ A small, focused studio building casino slot games. Its meaningfully different m
 ## Evidence on Hand
 
 - Logo asset confirmed: `public/logo.png` (white mark on transparent, sourced from the provided `logo.jpeg`).
-- Real game shipped: **Lizard Kings Gold**, a Stake Engine slot live on Stake (https://stake.com/ru/casino/games/akgames-lizard-kings-gold), studio page /ru/casino/group/ak-games. House edge 3.30% shown on the game page. Real game art saved to `public/games/lizard-kings-gold.png`.
-- Real game shipped: **Ancient Rus**, a Slavic-mythology slot with three bonus games (Zmey Gorynych, Koschei, Mokosh). Real game art saved to `public/games/ancient-rus.webp` (converted from the provided `ak-games_ancient-rus_tile.png`).
-- Announced, unreleased: **Hollow Cat** (spooky-season slot; details, mechanics and play URL not confirmed — shows as "Coming soon" with no Play link). Tile saved to `public/games/hollow-cat.webp` (converted from the provided `ak-games_hollow-cat_tile (1).png`). Not counted in games shipped.
+- Real game shipped: **Lizard Kings Gold**, Mesoamerican temple 5×5 / 3,125-ways slot live on Stake (https://stake.com/casino/games/akgames-lizard-kings-gold). RTP 96.70%, house edge 3.30%, volatility Medium (base), max win 5,000×, hit rate (base) 29.07%. Golden Ways SuperSpin 2×, Lizard King’s Multiplier 100×, Imperial Sacrifice 250× (Emerald Totem). Media: `public/games/lizard-kings-gold*.webp`.
+- Real game shipped: **Ancient Rus**, Slavic-mythology 6×4 / 4,096-ways tumble slot. RTP 96.70%, house edge 3.30%, volatility Low, max win 10,000×, hit rate (base) 29.07%. Bonus buys: Blessing of Veles 2×, Gift of the Volkhvs 13.5×, Serpent’s Lair 300×, Koschei’s Chains 600×, Makosh’s Threads 1000×. Media: `public/games/ancient-rus*.webp`.
+- Real game shipped: **Hollow Cat**, spooky-season slot live on Stake (https://stake.com/casino/games/akgames-hollow-cat). RTP 96.30%, house edge 3.70%, volatility High, max win 30,000×, hit rate (base) 50.56%. Mechanics: 5×5, 3,125 ways, cascades, multipliers, free spins. Bonus buys: Double Haunt 2×, Second Helping 20×, Spider Chamber 200× (hold-and-spin / sticky Wilds / 3 lives), Midnight Ritual 1000× (guaranteed FS). Media: `public/games/hollow-cat*.webp`.
+- Announced, unreleased: **Candy Cat** (royal candy-land 7×7 cluster Stake Engine slot). RTP 96.30%, house edge 3.70%, max win 50,000×. Clusters of 12+ orthogonal; tumble; Wild multipliers summed after cascade; Wild Specials Gingerbread / Chocolate / Jewel Spill; FS on 4+ scatters. Bonus buys: Sugar Dust 5×, Double Dip 40×, Candy Court 250×, Opening Ceremony 1000× (8 FS + Frosting). Cover and stills in `public/games/candy-cat*.webp`. Not counted in games shipped.
 - Real game shipped: **Vice Heat Cat**, a sunset-strip slot live on Stake (https://stake.com/ru/casino/games/akgames-vice-heat-cat). Real game art saved to `public/games/vice-heat-cat.webp` (converted from the provided `ak-games_vice-heat-cat_3x4.png`).
 - Real game shipped: **Oktobercat**, a Bavarian beer-fest slot live on Stake (https://stake.com/ru/casino/games/akgames-oktobercat). Real game art saved to `public/games/oktobercat.webp` (converted from the provided `ak-games_oktobercat_3x4.png`).
-- Real company facts exist (founding, team size, games shipped, locations, milestones). Founded 2026, team of two, and four games shipped are confirmed; locations and milestones are pending user confirmation — currently placeholders.
+- Real company facts exist (founding, team size, games shipped, locations, milestones). Founded 2026, lean specialist team, and five games shipped are confirmed; locations remain omitted until confirmed.
 - No game demos, trailers, metrics, testimonials, case studies, or press assets beyond the above were provided. Future work must not fabricate these.
 
 ## Product Principles
