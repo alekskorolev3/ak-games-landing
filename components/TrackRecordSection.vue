@@ -3,7 +3,7 @@ const facts = [
   { label: 'Focus', value: 'Casino slot games', confirmed: true },
   { label: 'Founded', value: '2026', confirmed: true },
   { label: 'Team', value: '2', confirmed: true },
-  { label: 'Games shipped', value: '2', confirmed: true },
+  { label: 'Games shipped', value: '4', confirmed: true },
   { label: 'Locations', value: '—', confirmed: false }
 ]
 </script>

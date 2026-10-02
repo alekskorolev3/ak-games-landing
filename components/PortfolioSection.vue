@@ -36,6 +36,24 @@ onUnmounted(() => {
 
 const games = [
   {
+    title: 'Oktobercat',
+    tag: 'Live on Stake',
+    note: 'Bavarian beer-fest slot.',
+    img: '/games/oktobercat.webp',
+    url: 'https://stake.com/ru/casino/games/akgames-oktobercat',
+    chip: 'Live',
+    chipLabel: 'Live game'
+  },
+  {
+    title: 'Vice Heat Cat',
+    tag: 'Live on Stake',
+    note: 'Sunset-strip slot.',
+    img: '/games/vice-heat-cat.webp',
+    url: 'https://stake.com/ru/casino/games/akgames-vice-heat-cat',
+    chip: 'Live',
+    chipLabel: 'Live game'
+  },
+  {
     title: 'Hollow Cat',
     tag: 'Coming soon',
     note: 'Spooky-season slot. Details to be announced.',
@@ -71,9 +89,9 @@ const games = [
     <div class="container">
       <h2>Games</h2>
       <p class="games-intro">
-        Two titles released — Lizard Kings Gold live on Stake and the new
-        Ancient Rus — each built to the same bar: clean math, sharp art,
-        play that holds up.
+        Four titles released — Oktobercat, Vice Heat Cat, Ancient Rus and
+        Lizard Kings Gold live on Stake — each built to the same bar:
+        clean math, sharp art, play that holds up.
       </p>
       <div ref="trackRef" class="game-track" role="region" aria-roledescription="carousel" aria-label="Games">
         <article v-for="game in games" :key="game.title" class="game-card">
