@@ -25,6 +25,47 @@ watch(slug, () => {
   demoFailed.value = false
 })
 
+/** Stake Engine documented iframe presets (game canvas). */
+const DEMO_PRESETS = [
+  { id: 'desktop', w: 1200, h: 675 },
+  { id: 'laptop', w: 1024, h: 576 },
+  { id: 'popout-l', w: 800, h: 450 },
+  { id: 'popout-s', w: 400, h: 225 },
+  { id: 'mobile-l', w: 425, h: 812 },
+  { id: 'mobile-m', w: 375, h: 667 },
+  { id: 'mobile-s', w: 320, h: 568 }
+] as const
+
+type DemoPreset = (typeof DEMO_PRESETS)[number]
+
+const demoHost = ref<HTMLElement | null>(null)
+const demoPreset = ref<DemoPreset>(DEMO_PRESETS[DEMO_PRESETS.length - 1])
+
+const pickDemoPreset = (availW: number, availH: number): DemoPreset => {
+  const wantLandscape = availW >= availH
+  const fits = DEMO_PRESETS.filter((p) => p.w <= availW && p.h <= availH)
+  const pool = fits.length
+    ? fits
+    : [...DEMO_PRESETS].sort((a, b) => a.w * a.h - b.w * b.h)
+
+  const oriented = pool.filter((p) => (p.w >= p.h) === wantLandscape)
+  const candidates = oriented.length ? oriented : pool
+  return candidates.reduce((best, p) =>
+    p.w * p.h > best.w * best.h ? p : best
+  )
+}
+
+const updateDemoPreset = () => {
+  if (!import.meta.client || !demoHost.value) return
+  const rect = demoHost.value.getBoundingClientRect()
+  const availW = Math.max(280, Math.floor(rect.width))
+  const availH = Math.max(220, Math.floor(Math.min(window.innerHeight * 0.8, 900)))
+  const next = pickDemoPreset(availW, availH)
+  if (next.id !== demoPreset.value.id) {
+    demoPreset.value = next
+  }
+}
+
 const specs = computed(() => {
   const g = game.value!
   return [
@@ -74,6 +115,8 @@ const onLightboxKey = (e: KeyboardEvent) => {
   if (e.key === 'ArrowRight') lightboxNext()
 }
 
+let demoRo: ResizeObserver | null = null
+
 watch(lightboxOpen, (open) => {
   if (!import.meta.client) return
   document.body.style.overflow = open ? 'hidden' : ''
@@ -81,15 +124,24 @@ watch(lightboxOpen, (open) => {
 
 onMounted(() => {
   window.addEventListener('keydown', onLightboxKey)
+  updateDemoPreset()
+  if (demoHost.value && typeof ResizeObserver !== 'undefined') {
+    demoRo = new ResizeObserver(() => updateDemoPreset())
+    demoRo.observe(demoHost.value)
+  }
+  window.addEventListener('resize', updateDemoPreset)
 })
+
 onUnmounted(() => {
   window.removeEventListener('keydown', onLightboxKey)
   document.body.style.overflow = ''
+  demoRo?.disconnect()
+  demoRo = null
+  window.removeEventListener('resize', updateDemoPreset)
 })
 
 const isPortraitShot = (src: string) =>
   src === game.value.cover || /3x4|cover|tile/i.test(src)
-
 </script>
 
 <template>
@@ -174,43 +226,59 @@ const isPortraitShot = (src: string) =>
           </template>
         </p>
 
-        <div class="demo-shell" :class="{ embed: showDemoEmbed }">
-          <iframe
-            v-if="showDemoEmbed"
-            class="demo-frame"
-            :src="game.demoEmbedUrl"
-            :title="`${game.title} demo`"
-            allow="autoplay; fullscreen; payment"
-            allowfullscreen
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            @error="onDemoError"
-          />
-          <div v-else class="demo-fallback">
-            <img
-              :src="game.cover"
-              :alt="''"
-              class="demo-poster"
-              width="120"
-              height="160"
-              decoding="async"
+        <div ref="demoHost" class="demo-host">
+          <div
+            class="demo-shell"
+            :class="{ embed: showDemoEmbed }"
+            :style="
+              showDemoEmbed
+                ? {
+                    width: `${demoPreset.w}px`,
+                    height: `${demoPreset.h}px`
+                  }
+                : undefined
+            "
+          >
+            <iframe
+              v-if="showDemoEmbed"
+              :key="`${slug}-${demoPreset.id}`"
+              class="demo-frame"
+              :src="game.demoEmbedUrl"
+              :title="`${game.title} demo`"
+              :width="demoPreset.w"
+              :height="demoPreset.h"
+              allow="autoplay; fullscreen; payment"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              @error="onDemoError"
             />
-            <div class="demo-fallback-copy">
-              <p v-if="game.stakeUrl">
-                Launch the playable game on Stake.
-              </p>
-              <p v-else>
-                Demo unavailable until release.
-              </p>
-              <a
-                v-if="game.stakeUrl"
-                :href="game.stakeUrl"
-                class="btn btn-primary"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Play on Stake →
-              </a>
+            <div v-else class="demo-fallback">
+              <img
+                :src="game.cover"
+                :alt="''"
+                class="demo-poster"
+                width="120"
+                height="160"
+                decoding="async"
+              />
+              <div class="demo-fallback-copy">
+                <p v-if="game.stakeUrl">
+                  Launch the playable game on Stake.
+                </p>
+                <p v-else>
+                  Demo unavailable until release.
+                </p>
+                <a
+                  v-if="game.stakeUrl"
+                  :href="game.stakeUrl"
+                  class="btn btn-primary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Play on Stake →
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -463,6 +531,13 @@ const isPortraitShot = (src: string) =>
   color: var(--ink);
 }
 
+.demo-host {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+}
+
 .demo-shell {
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
@@ -471,7 +546,7 @@ const isPortraitShot = (src: string) =>
 }
 
 .demo-shell.embed {
-  width: max-content;
+  flex: 0 0 auto;
   margin-inline: auto;
   min-height: 0;
   border: 0;
@@ -480,61 +555,10 @@ const isPortraitShot = (src: string) =>
 
 .demo-frame {
   display: block;
-  width: 320px;
-  height: 616px;
+  width: 100%;
+  height: 100%;
   border: 0;
   background: #000;
-}
-
-@media (min-width: 407px) {
-  .demo-frame {
-    width: 375px;
-    height: 715px;
-  }
-}
-
-@media (min-width: 457px) {
-  .demo-frame {
-    width: 425px;
-    height: 860px;
-  }
-}
-
-@media (min-width: 568px) {
-  .demo-frame {
-    width: 400px;
-    height: 273px;
-  }
-}
-
-@media (min-width: 832px) {
-  .demo-frame {
-    width: 800px;
-    height: 498px;
-  }
-}
-
-@media (min-width: 1056px) {
-  .demo-frame {
-    width: 1024px;
-    height: 624px;
-  }
-}
-
-@media (min-width: 1232px) {
-  .demo-frame {
-    width: 1200px;
-    height: 723px;
-  }
-}
-
-@media (max-width: 351px), (min-width: 1232px) {
-  .demo-shell.embed {
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-inline: 0;
-  }
 }
 
 .demo-fallback {
