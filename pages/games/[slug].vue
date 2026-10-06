@@ -162,11 +162,12 @@ const isPortraitShot = (src: string) =>
       <div class="container">
         <h2>Demo</h2>
         <p class="section-lead">
-          <template v-if="game.status === 'coming-soon'">
-            A playable demo will land here at launch.
+          <template v-if="showDemoEmbed">
+            Playable demo — same build that runs on Stake Engine, with a
+            play-money balance.
           </template>
-          <template v-else-if="showDemoEmbed">
-            Playable demo — same build that runs on Stake Engine.
+          <template v-else-if="game.status === 'coming-soon'">
+            A playable demo will land here at launch.
           </template>
           <template v-else>
             Full playable session opens on Stake.
@@ -470,15 +471,70 @@ const isPortraitShot = (src: string) =>
 }
 
 .demo-shell.embed {
+  width: max-content;
+  margin-inline: auto;
   min-height: 0;
+  border: 0;
+  box-shadow: 0 0 0 1px var(--line);
 }
 
 .demo-frame {
-  width: 100%;
-  min-height: 480px;
-  border: 0;
   display: block;
+  width: 320px;
+  height: 616px;
+  border: 0;
   background: #000;
+}
+
+@media (min-width: 407px) {
+  .demo-frame {
+    width: 375px;
+    height: 715px;
+  }
+}
+
+@media (min-width: 457px) {
+  .demo-frame {
+    width: 425px;
+    height: 860px;
+  }
+}
+
+@media (min-width: 568px) {
+  .demo-frame {
+    width: 400px;
+    height: 273px;
+  }
+}
+
+@media (min-width: 832px) {
+  .demo-frame {
+    width: 800px;
+    height: 498px;
+  }
+}
+
+@media (min-width: 1056px) {
+  .demo-frame {
+    width: 1024px;
+    height: 624px;
+  }
+}
+
+@media (min-width: 1232px) {
+  .demo-frame {
+    width: 1200px;
+    height: 723px;
+  }
+}
+
+@media (max-width: 351px), (min-width: 1232px) {
+  .demo-shell.embed {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-inline: 0;
+  }
 }
 
 .demo-fallback {
@@ -656,10 +712,6 @@ const isPortraitShot = (src: string) =>
   .spec-row {
     grid-template-columns: 1fr;
     gap: 0.25rem;
-  }
-
-  .demo-frame {
-    min-height: 360px;
   }
 
   .lightbox-nav {

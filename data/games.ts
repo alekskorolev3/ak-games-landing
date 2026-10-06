@@ -74,6 +74,7 @@ export const games: Game[] = [
     summary:
       'A high-volatility spooky-season Stake Engine slot with cascading play, multipliers and free spins — live on Stake. Max win 30,000×.',
     cover: '/games/hollow-cat.webp',
+    demoEmbedUrl: '/share/ak-games/hollow-cat/26/21',
     stakeUrl: 'https://stake.com/casino/games/akgames-hollow-cat',
     screenshots: [
       '/games/hollow-cat.webp',
@@ -114,6 +115,7 @@ export const games: Game[] = [
     summary:
       'A Bavarian beer-fest Stake Engine slot with tumbling wins, Ginger Hearts, free spins and bonus buys. Max win 10,000×.',
     cover: '/games/oktobercat.webp',
+    demoEmbedUrl: '/share/ak-games/oktobercat/9/4',
     stakeUrl: 'https://stake.com/casino/games/akgames-oktobercat',
     screenshots: [
       '/games/oktobercat.webp',
@@ -154,6 +156,7 @@ export const games: Game[] = [
     summary:
       'A Miami Vice–style Stake Engine slot on a 5×5 / 3,125-ways board with tumble cascades, Wanted stars and free spins. Max win 10,000×.',
     cover: '/games/vice-heat-cat.webp',
+    demoEmbedUrl: '/share/ak-games/vice-heat-cat/5/8',
     stakeUrl: 'https://stake.com/casino/games/akgames-vice-heat-cat',
     screenshots: [
       '/games/vice-heat-cat.webp',
@@ -194,6 +197,7 @@ export const games: Game[] = [
     summary:
       'A Slavic-mythology Stake Engine slot on a 6×4 / 4,096-ways board with tumble cascades, artifacts, Wild multipliers and three boss bonuses — Serpent’s Lair, Koschei and Makosh. Max win 10,000×.',
     cover: '/games/ancient-rus.webp',
+    demoEmbedUrl: '/share/ak-games/ancient-rus/28/12',
     stakeUrl: 'https://stake.com/casino/games/akgames-ancient-rus',
     screenshots: [
       '/games/ancient-rus.webp',
@@ -235,6 +239,7 @@ export const games: Game[] = [
     summary:
       'A Mesoamerican temple Stake Engine slot on a 5×5 / 3,125-ways board with additive Wild multipliers, Golden Ways SuperSpin, Emerald Totem free spins and feature buys. Max win 5,000×.',
     cover: '/games/lizard-kings-gold.webp',
+    demoEmbedUrl: '/share/ak-games/lizard-kings-gold/32/82',
     stakeUrl: 'https://stake.com/casino/games/akgames-lizard-kings-gold',
     screenshots: [
       '/games/lizard-kings-gold.webp',
