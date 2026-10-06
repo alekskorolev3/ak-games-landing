@@ -38,7 +38,13 @@ const isEnginePath = (pathname: string) => {
   return ENGINE_PREFIXES.some((prefix) => pathname.startsWith(prefix))
 }
 
-export const onRequest = async ({ request, env }: { request: Request; env: { ASSETS: { fetch: (input: Request | string) => Promise<Response> } } }) => {
+export const onRequest = async ({
+  request,
+  env
+}: {
+  request: Request
+  env: { ASSETS: { fetch: (input: Request | string) => Promise<Response> } }
+}) => {
   const url = new URL(request.url)
 
   if (!isEnginePath(url.pathname)) {
@@ -61,7 +67,7 @@ export const onRequest = async ({ request, env }: { request: Request; env: { ASS
     upstream = await fetch(UPSTREAM + url.pathname + url.search, {
       method: request.method,
       headers,
-      redirect: 'manual',
+      redirect: 'manual'
     })
   } catch {
     return new Response('upstream unavailable', { status: 502 })
@@ -84,14 +90,41 @@ export const onRequest = async ({ request, env }: { request: Request; env: { ASS
   }
 
   const html = await upstream.text()
-  // Hide Engine share chrome (48px "Game by Studio" header). Without this the
-  // nested game canvas is shorter than Stake's documented iframe sizes and the
-  // board shifts — especially visible on Hollow Cat / Vice Heat Cat.
-  const chromeFix =
-    '<style id="ak-demo-chrome-fix">' +
-    'body .fixed.inset-0.flex.flex-col > header{display:none!important;height:0!important;min-height:0!important;overflow:hidden!important;border:0!important;padding:0!important;margin:0!important}' +
-    'html,body{margin:0;padding:0;overflow:hidden;background:#000}' +
-    '</style>'
+  // Keep Engine share chrome (48px title bar). Only fix iOS iframe quirks:
+  // fixed + 100dvh / safe-area inside nested iframes mis-measure height and
+  // clip the board + header. Never remove the header.
+  const chromeFix = [
+    '<style id="ak-demo-chrome-fix">',
+    'html,body{width:100%!important;height:100%!important;min-height:0!important;max-height:100%!important;margin:0!important;padding:0!important;overflow:hidden!important;background:#000!important}',
+    'body[style]{min-height:0!important;height:100%!important}',
+    'body .fixed.inset-0.flex.flex-col{position:absolute!important;inset:0!important;top:0!important;right:0!important;bottom:0!important;left:0!important;width:100%!important;height:100%!important;max-height:100%!important;margin:0!important;padding:0!important;transform:none!important;display:flex!important;flex-direction:column!important}',
+    'body .fixed.inset-0.flex.flex-col > header{display:flex!important;height:3rem!important;min-height:3rem!important;max-height:3rem!important;flex:0 0 3rem!important;overflow:visible!important;padding-left:0.75rem!important;padding-right:0.75rem!important;box-sizing:border-box!important}',
+    'body .fixed.inset-0.flex.flex-col > header .truncate{overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important;min-width:0!important;flex:1 1 auto!important}',
+    /* On narrow mobile presets, drop "by Studio" so the game title is not cut to "AK Ga..." */
+    '@media (max-width:420px){body .fixed.inset-0.flex.flex-col > header .text-muted-foreground{display:none!important}}',
+    'body .fixed.inset-0.flex.flex-col > main{position:relative!important;flex:1 1 auto!important;min-height:0!important;height:auto!important;padding:0!important;margin:0!important}',
+    'body .fixed.inset-0.flex.flex-col > main > iframe{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;border:0!important}',
+    '</style>',
+    '<script id="ak-demo-ios-fit">(function(){',
+    'var t;',
+    'function fit(){',
+    'var root=document.querySelector(".fixed.inset-0.flex.flex-col");',
+    'if(!root)return;',
+    'var w=window.innerWidth||document.documentElement.clientWidth;',
+    'var ht=window.innerHeight||document.documentElement.clientHeight;',
+    'root.style.cssText="position:absolute;inset:0;top:0;left:0;width:"+w+"px;height:"+ht+"px;padding:0;margin:0;max-height:"+ht+"px;display:flex;flex-direction:column";',
+    'document.documentElement.style.height=ht+"px";',
+    'document.body.style.cssText="margin:0;padding:0;overflow:hidden;width:"+w+"px;height:"+ht+"px;min-height:0";',
+    '}',
+    'function schedule(){clearTimeout(t);t=setTimeout(fit,40);}',
+    'fit();',
+    'window.addEventListener("resize",schedule,{passive:true});',
+    'window.addEventListener("orientationchange",function(){setTimeout(fit,80);});',
+    'window.addEventListener("load",fit);',
+    'if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",fit);',
+    'setTimeout(fit,120);setTimeout(fit,600);',
+    '})();</script>'
+  ].join('')
 
   const cleaned = html
     .replace(/<meta\s+http-equiv="Content-Security-Policy"[^>]*>/gi, '')
