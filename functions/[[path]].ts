@@ -84,19 +84,9 @@ export const onRequest = async ({ request, env }: { request: Request; env: { ASS
   }
 
   const html = await upstream.text()
-  // Hide Engine share chrome (48px "Game by Studio" header). Without this the
-  // nested game canvas is shorter than Stake's documented iframe sizes and the
-  // board shifts — especially visible on Hollow Cat / Vice Heat Cat.
-  const chromeFix =
-    '<style id="ak-demo-chrome-fix">' +
-    'body .fixed.inset-0.flex.flex-col > header{display:none!important;height:0!important;min-height:0!important;overflow:hidden!important;border:0!important;padding:0!important;margin:0!important}' +
-    'html,body{margin:0;padding:0;overflow:hidden;background:#000}' +
-    '</style>'
-
   const cleaned = html
     .replace(/<meta\s+http-equiv="Content-Security-Policy"[^>]*>/gi, '')
     .replace(/<base\b[^>]*>/gi, '')
-    .replace(/<\/head>/i, `${chromeFix}</head>`)
 
   out.set('content-type', 'text/html; charset=utf-8')
   out.set('content-security-policy', DEMO_CSP)
