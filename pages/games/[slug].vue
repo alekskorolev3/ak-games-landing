@@ -36,57 +36,30 @@ const DEMO_PRESETS = [
   { id: 'mobile-s', w: 320, h: 568 }
 ] as const
 
-/** Engine share title bar ("Game by Studio") above the nested game canvas. */
-const DEMO_CHROME_H = 48
-
 type DemoPreset = (typeof DEMO_PRESETS)[number]
 
 const demoHost = ref<HTMLElement | null>(null)
 const demoPreset = ref<DemoPreset>(DEMO_PRESETS[DEMO_PRESETS.length - 1])
 
-const demoShellW = computed(() => demoPreset.value.w)
-const demoShellH = computed(() => demoPreset.value.h + DEMO_CHROME_H)
-
 const pickDemoPreset = (availW: number, availH: number): DemoPreset => {
   const wantLandscape = availW >= availH
-  const fits = DEMO_PRESETS.filter(
-    (p) => p.w <= availW && p.h + DEMO_CHROME_H <= availH
+  const fits = DEMO_PRESETS.filter((p) => p.w <= availW && p.h <= availH)
+  const pool = fits.length
+    ? fits
+    : [...DEMO_PRESETS].sort((a, b) => a.w * a.h - b.w * b.h)
+
+  const oriented = pool.filter((p) => (p.w >= p.h) === wantLandscape)
+  const candidates = oriented.length ? oriented : pool
+  return candidates.reduce((best, p) =>
+    p.w * p.h > best.w * best.h ? p : best
   )
-
-  if (fits.length) {
-    const oriented = fits.filter((p) => (p.w >= p.h) === wantLandscape)
-    const candidates = oriented.length ? oriented : fits
-    return candidates.reduce((best, p) =>
-      p.w * p.h > best.w * best.h ? p : best
-    )
-  }
-
-  // Nothing fits exactly (common on real iPhones with nav chrome). Pick the
-  // portrait/landscape preset that overflows the least by cover-scale.
-  const oriented = DEMO_PRESETS.filter((p) => (p.w >= p.h) === wantLandscape)
-  const pool = oriented.length ? oriented : [...DEMO_PRESETS]
-  return pool.reduce((best, p) => {
-    const bestH = best.h + DEMO_CHROME_H
-    const pH = p.h + DEMO_CHROME_H
-    const scaleBest = Math.min(availW / best.w, availH / bestH)
-    const scaleP = Math.min(availW / p.w, availH / pH)
-    if (scaleP > scaleBest) return p
-    if (scaleP === scaleBest && p.w * p.h < best.w * best.h) return p
-    return best
-  })
 }
 
 const updateDemoPreset = () => {
   if (!import.meta.client || !demoHost.value) return
   const rect = demoHost.value.getBoundingClientRect()
-  // Prefer visualViewport on iOS — layout viewport can include unreachable areas.
-  const vv = window.visualViewport
-  const viewportH = vv?.height ?? window.innerHeight
   const availW = Math.max(280, Math.floor(rect.width))
-  const availH = Math.max(
-    220,
-    Math.floor(Math.min(viewportH * 0.78, 900))
-  )
+  const availH = Math.max(220, Math.floor(Math.min(window.innerHeight * 0.8, 900)))
   const next = pickDemoPreset(availW, availH)
   if (next.id !== demoPreset.value.id) {
     demoPreset.value = next
@@ -260,8 +233,8 @@ const isPortraitShot = (src: string) =>
             :style="
               showDemoEmbed
                 ? {
-                    width: `${demoShellW}px`,
-                    height: `${demoShellH}px`
+                    width: `${demoPreset.w}px`,
+                    height: `${demoPreset.h}px`
                   }
                 : undefined
             "
@@ -272,8 +245,8 @@ const isPortraitShot = (src: string) =>
               class="demo-frame"
               :src="game.demoEmbedUrl"
               :title="`${game.title} demo`"
-              :width="demoShellW"
-              :height="demoShellH"
+              :width="demoPreset.w"
+              :height="demoPreset.h"
               allow="autoplay; fullscreen; payment"
               allowfullscreen
               loading="lazy"
@@ -563,7 +536,6 @@ const isPortraitShot = (src: string) =>
   display: flex;
   justify-content: center;
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
 }
 
 .demo-shell {
@@ -574,26 +546,17 @@ const isPortraitShot = (src: string) =>
 }
 
 .demo-shell.embed {
-  position: relative;
   flex: 0 0 auto;
   margin-inline: auto;
   min-height: 0;
-  /* Square corners — radius was clipping Engine chrome + game frame edges */
   border: 0;
-  border-radius: 0;
   box-shadow: 0 0 0 1px var(--line);
-  overflow: hidden;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
 }
 
 .demo-frame {
-  position: absolute;
-  inset: 0;
   display: block;
-  width: 100% !important;
-  height: 100% !important;
-  max-width: none;
+  width: 100%;
+  height: 100%;
   border: 0;
   background: #000;
 }
